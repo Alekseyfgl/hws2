@@ -15,10 +15,10 @@ const FriendMessage = (props: FriendMessageProps) => {
             className={s.friendMessage}
         >
             <div className={s.friendImageAndText}>
-                <img
+                <img src={props.message.user.avatar}
                     id={'hw1-friend-avatar-' + props.message.id}
                     // создаёт студент
-
+                    alt={'friend-avatar'}
                     //
                 />
                 <div className={s.friendText}>
@@ -27,7 +27,7 @@ const FriendMessage = (props: FriendMessageProps) => {
                         className={s.friendName}
                     >
                         {/*создаёт студент*/}
-
+                        {props.message.user.name}
                         {/**/}
                     </div>
                     <pre
@@ -35,7 +35,7 @@ const FriendMessage = (props: FriendMessageProps) => {
                         className={s.friendMessageText}
                     >
                         {/*создаёт студент*/}
-
+                        {props.message.message.text}
                         {/**/}
                     </pre>
                 </div>
@@ -45,7 +45,7 @@ const FriendMessage = (props: FriendMessageProps) => {
                 className={s.friendTime}
             >
                 {/*создаёт студент*/}
-
+                {props.message.message.time}
                 {/**/}
             </div>
         </div>
