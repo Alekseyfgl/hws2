@@ -14,7 +14,7 @@
     height: 700px;
     font-family: 'Montserrat', serif;
     font-size: 16px;
-    /*overflow-y: auto;*/
+    overflow-y: auto;
 }
 
 .hwTitle {
