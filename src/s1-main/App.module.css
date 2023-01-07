@@ -4,11 +4,17 @@
     margin: 0 auto;
     padding-top: 142px;
     padding-bottom: 142px;
-    height: 720px;
 }
 
 .hw {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 24px 70px 56px;
+    height: 700px;
+    font-family: 'Montserrat', serif;
+    font-size: 16px;
+    /*overflow-y: auto;*/
 }
 
 .hwTitle {
