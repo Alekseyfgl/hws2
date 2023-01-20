@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { v1 } from 'uuid'
+import React, {Dispatch, SetStateAction, useState} from 'react'
+import {v1} from 'uuid'
 import s2 from '../../s1-main/App.module.css'
 import GreetingContainer from './GreetingContainer'
 
@@ -12,27 +12,28 @@ import GreetingContainer from './GreetingContainer'
 * 6 - в файле GreetingContainer.tsx дописать тип и логику функции setNameCallback
 * 7 - в файле GreetingContainer.tsx дописать логику функций pureAddUser, pureOnBlur, pureOnEnter и проверить их тестами
 * 8 - в файле GreetingContainer.tsx вычислить количество добавленных и имя последнего (totalUsers, lastUserName)
-* 9 - в файле Greeting.tsx дописать типизацию пропсов
+* 9 - вre файле Geting.tsx дописать типизацию пропсов
 * 10 - в файле Greeting.tsx вычислить inputClass в зависимости от наличия ошибки
 * 11 - сделать стили в соответствии с дизайном
 * */
 
 // types
 export type UserType = {
-    _id: any // need to fix any
-    name: any // need to fix any
+    _id: number // need to fix any
+    name: string // need to fix any
 }
 
-export const pureAddUserCallback = (name: any, setUsers: any, users: any) => { // need to fix any
-    const user = { // need to fix
-    }
+export const pureAddUserCallback = (name: string, setUsers: (users: UserType[]) => void, users: UserType[]): void => { // need to fix any
+    const _id: number = +new Date()
+    const user: UserType = {_id, name}
     setUsers([...users, user])
 }
 
 const HW3 = () => {
-    const [users, setUsers] = useState<any>([]) // need to fix any
+    const [users, setUsers] = useState<UserType[]>([]) // need to fix any
 
-    const addUserCallback = (name: any) => { // need to fix any
+
+    const addUserCallback = (name: string): void => { // need to fix any
         pureAddUserCallback(name, setUsers, users)
     }
 
