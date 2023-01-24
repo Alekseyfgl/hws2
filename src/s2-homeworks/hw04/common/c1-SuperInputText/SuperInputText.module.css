@@ -11,6 +11,8 @@
 }
 
 .errorInput {
+    background-color: red;
+    border: 3px solid red;
 }
 
 .errorInput:focus {
