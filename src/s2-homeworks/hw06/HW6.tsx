@@ -21,7 +21,6 @@ const HW6 = () => {
         // делают студенты
 
     }
-
     return (
         <div id={'hw6'}>
             <div className={s2.hwTitle}>Homework #6</div>
