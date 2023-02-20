@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import SuperSelect from './common/c5-SuperSelect/SuperSelect'
 import SuperRadio from './common/c6-SuperRadio/SuperRadio'
 import s2 from '../../s1-main/App.module.css'
@@ -10,15 +10,19 @@ import s from './HW7.module.css'
 * 3 - в файле SuperRadio.tsx дописать name, checked, value (узнать для чего в радио name)
 * 4 - сделать стили в соответствии с дизайном
 * */
+export interface IArr {
+    id: number,
+    value: string | number
+}
 
-const arr = [
-    { id: 1, value: 'x' },
-    { id: 2, value: 'y' },
-    { id: 3, value: 'z' },
+const arr: IArr[] = [
+    {id: 1, value: 'x'},
+    {id: 2, value: 'y'},
+    {id: 3, value: 'z'},
 ] // value может быть изменено
 
 const HW7 = () => {
-    const [value, onChangeOption] = useState(1) // селект и радио должны работать синхронно
+    const [value, onChangeOption] = useState<number>(1) // селект и радио должны работать синхронно
 
     return (
         <div id={'hw7'}>
