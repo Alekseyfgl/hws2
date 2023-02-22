@@ -1,23 +1,34 @@
 .item {
+    border-bottom: 1px solid black;
 }
 
 .item:last-of-type {
 }
 
 .users {
+    border-collapse: collapse;
+    border: 1px solid black;
 }
 
 .buttonsContainer {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
 .container {
 }
 
 .thead {
+    background-color: #b1b1b1;
 }
 
 .nameCol {
+    padding: 10px 20px;
+    text-align: start;
+    width: 300px;
 }
 
 .ageCol {
+    width: 400px;
 }
