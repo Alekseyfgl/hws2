@@ -10,7 +10,7 @@ const sortByName = (arr: UserType[], type: 'up' | 'down'): UserType[] => {
     } else if (type === 'down') {
         return [...arr].sort((a, b) => a.name < b.name ? 1 : -1);
     } else {
-        return [...arr]
+        return arr
     }
 }
 
@@ -20,7 +20,7 @@ export const homeWorkReducer = (state: UserType[], action: ActionType): UserType
             return sortByName(state, action.payload)
         }
         case 'check': {
-            return [...state].filter(u => u.age > action.payload)
+            return state.filter(u => u.age > action.payload)
         }
         default:
             return state
