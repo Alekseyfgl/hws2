@@ -12,22 +12,27 @@ function Clock() {
     // for autotests // не менять // можно подсунуть в локалСторэдж нужную дату, чтоб увидеть как она отображается
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
-    const weekday: DaysType[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayOfWeek: DaysType[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    const timeCreator = (date: Date) => `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-    const getDay = (date: Date): DaysType => {
-        console.log()
-        return weekday[date.getDay()]
-    }
+    const timeCreator = (date: Date): string => `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    const getDay = (date: Date): DaysType => dayOfWeek[date.getDay()]
 
 
     useEffect(() => {
+        const delay: number = 1000;
         //componentDidMount
         //componentDidUpdate
         //componentWillUnmount - перед удалением компонента
-        const timer = setInterval(() => {
+
+        // const timer = setInterval(() => {
+        //     setDate(new Date());
+        // }, 1000);
+
+        let timer = setTimeout(function tick() {
             setDate(new Date());
-        }, 1000);
+            timer = setTimeout(tick, delay);
+        }, delay);
+
         setTimerId(+timer)
 
         return () => {
@@ -93,14 +98,14 @@ function Clock() {
             <div className={s.buttonsContainer}>
                 <SuperButton
                     id={'hw9-button-start'}
-                    disabled={isDisableTimer} // пишут студенты // задизэйблить если таймер запущен
+                    disabled={false} // пишут студенты // задизэйблить если таймер запущен
                     onClick={start}
                 >
                     start
                 </SuperButton>
                 <SuperButton
                     id={'hw9-button-stop'}
-                    disabled={isDisableTimer} // пишут студенты // задизэйблить если таймер не запущен
+                    disabled={false} // пишут студенты // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
                     stop
