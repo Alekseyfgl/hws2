@@ -19,17 +19,19 @@ type MonthType =
     | "November"
     | "December"
 
+const month: MonthType[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const dayOfWeek: DaysType[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+const timeCreator = (date: Date): string => date.toLocaleTimeString();
+const getDayTitle = (date: Date): DaysType => dayOfWeek[date.getDay()]
+const getMonthTitle = (date: Date): MonthType => month[date.getMonth()]
+
 function Clock() {
     const [timerId, setTimerId] = useState<number | undefined>(undefined)
     // for autotests // не менять // можно подсунуть в локалСторэдж нужную дату, чтоб увидеть как она отображается
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
-    const month: MonthType[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const dayOfWeek: DaysType[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    const timeCreator = (date: Date): string => date.toLocaleTimeString();
-    const getDayTitle = (date: Date): DaysType => dayOfWeek[date.getDay()]
-    const getMonthTitle = (date: Date): MonthType => month[date.getMonth()]
 
 
     const start = () => {
@@ -39,7 +41,7 @@ function Clock() {
             timer = setTimeout(tick, delay);
             setTimerId(+timer)
         }, delay);
-        setTimerId(+timer)
+        setTimerId(+timer);
         // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
         // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
     }
@@ -58,12 +60,12 @@ function Clock() {
     }
 
 
-    const stringTime = timeCreator(date) || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-    const stringDate = date.toLocaleDateString().replaceAll('/', '.') || <br/>
+    const stringTime = date.toLocaleTimeString('ru-Ru') || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
+    const stringDate = date.toLocaleDateString('ru-Ru') || <br/>
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
     const stringDay: DaysType = getDayTitle(date) || <br/> // пишут студенты
-    const stringMonth = getMonthTitle(date) || <br/> // пишут студенты
+    const stringMonth: MonthType = getMonthTitle(date) || <br/> // пишут студенты
 
     return (
         <div className={s.clock}>
