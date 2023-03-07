@@ -27,7 +27,7 @@ function Clock() {
     const month: MonthType[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const dayOfWeek: DaysType[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    const timeCreator = (date: Date): string => `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    const timeCreator = (date: Date): string => date.toLocaleTimeString();
     const getDayTitle = (date: Date): DaysType => dayOfWeek[date.getDay()]
     const getMonthTitle = (date: Date): MonthType => month[date.getMonth()]
 
@@ -39,6 +39,7 @@ function Clock() {
             timer = setTimeout(tick, delay);
             setTimerId(+timer)
         }, delay);
+        setTimerId(+timer)
         // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
         // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
     }
@@ -96,14 +97,14 @@ function Clock() {
             <div className={s.buttonsContainer}>
                 <SuperButton
                     id={'hw9-button-start'}
-                    disabled={false} // пишут студенты // задизэйблить если таймер запущен
+                    disabled={!!timerId || false} // пишут студенты // задизэйблить если таймер запущен
                     onClick={start}
                 >
                     start
                 </SuperButton>
                 <SuperButton
                     id={'hw9-button-stop'}
-                    disabled={false} // пишут студенты // задизэйблить если таймер не запущен
+                    disabled={!timerId || false} // пишут студенты // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
                     stop
